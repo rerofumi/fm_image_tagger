@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ImageTagger"
+dynamic = ["version"]
+description = "Caption tagger tool"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+ "click>=8.1.7",
+ "huggingface-hub>=0.25.2",
+ "numpy>=2.1.2",
+ "onnxruntime>=1.19.2",
+ "pandas>=2.2.3",
+ "pillow",
+]
+
+[project.scripts]
+ImageTagger = "ImageTagger.ImageTagger:run"
+
+[tool.hatch.version]
+path = "src/ImageTagger/__about__.py"
