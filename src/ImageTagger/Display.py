@@ -1,5 +1,6 @@
 from PIL import Image
 
+import ImageTagger.OllamaCaption as Caption
 import ImageTagger.Tagger as Tagger
 
 
@@ -28,3 +29,8 @@ def display(image_path, meta_flag, threshold=0.35):
         tagger = Tagger.WD14Tagger(Tagger.MOAT_MODEL_DSV2_REPO)
         tags = tagger.image_tag(image_path, threshold=threshold)
         print(f"Tags:\n{tags}")
+
+
+def caption(image_path, model, for_lora):
+    text = Caption.image2text(image_path, model, for_lora)
+    print(f"Caption:\n{text}")

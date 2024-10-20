@@ -12,6 +12,7 @@ dependencies = [
  "click>=8.1.7",
  "huggingface-hub>=0.25.2",
  "numpy>=2.1.2",
+ "ollama>=0.3.3",
  "onnxruntime>=1.19.2",
  "pandas>=2.2.3",
  "pillow",
