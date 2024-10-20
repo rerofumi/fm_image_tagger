@@ -1,6 +1,7 @@
 import click
 
 import ImageTagger.CommandTagger as CommandTagger
+import ImageTagger.Display as Display
 import ImageTagger.Rename as Rename
 import ImageTagger.TagEdit as Editor
 import ImageTagger.Total as Total
@@ -24,7 +25,7 @@ def tagger(path, threshold):
 @cli.command(help="Rename with the serial number")
 @click.argument("suffix", type=str)
 @click.argument("path", type=str)
-def renamer(suffix, path):
+def rename(suffix, path):
     Rename.rename_files(path, suffix)
 
 
@@ -47,6 +48,16 @@ def remove(keyword, path):
 @click.argument("path", type=str)
 def total(path):
     Total.total(path)
+
+
+@cli.command(help="display picture information")
+@click.argument("path", type=str)
+@click.option("-m", "--meta", is_flag=True, help="display prompt in metainfo")
+@click.option(
+    "-t", "--threshold", default=0.35, help="score threshold (default:0.35)", type=float
+)
+def display(path, meta, threshold):
+    Display.display(path, meta, threshold=threshold)
 
 
 # cli app entry point
