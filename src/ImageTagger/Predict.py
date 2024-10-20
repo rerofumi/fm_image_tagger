@@ -161,10 +161,6 @@ class Predictor:
 
         labels = list(zip(self.tag_names, preds[0].astype(float)))
 
-        # First 4 labels are actually ratings: pick one with argmax
-        ratings_names = [labels[i] for i in self.rating_indexes]
-        rating = dict(ratings_names)
-
         # Then we have general tags: pick any where prediction confidence > threshold
         general_names = [labels[i] for i in self.general_indexes]
 

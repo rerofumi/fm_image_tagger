@@ -46,7 +46,6 @@ def process_trigger(file_path, keyword):
                 check_tag = tag.strip()
                 if not check_tag == keyword:
                     new_tags.append(check_tag)
-            new_tags.append(keyword)
         output_tags = ", ".join(new_tags).replace("\n", " ") + "\n"
         with open(file_path, "w+", encoding="utf-8") as file:
             file.write(output_tags)
