@@ -1,6 +1,6 @@
 [project]
 name = "ImageTagger"
-"version" = "0.3.1"
+"version" = "0.3.2"
 description = "Caption tagger tool"
 readme = "README.md"
 requires-python = ">=3.10"
