@@ -10,7 +10,7 @@ def createTagFiles(path, threshold=0.35):
         print(f"The specified path is not a directory: {path}")
         sys.exit(1)
 
-    tagger = Tagger.WD14Tagger(Tagger.MOAT_MODEL_DSV2_REPO)
+    tagger = Tagger.WD14Tagger(Tagger.SWINV2_MODEL_DSV3_REPO)
     for root, dirs, files in os.walk(path):
         for file in files:
             if file.endswith(".png") or file.endswith(".jpg") or file.endswith(".jpeg"):
