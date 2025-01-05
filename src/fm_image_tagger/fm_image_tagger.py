@@ -1,10 +1,10 @@
 import click
 
-import ImageTagger.CommandTagger as CommandTagger
-import ImageTagger.Display as Display
-import ImageTagger.Rename as Rename
-import ImageTagger.TagEdit as Editor
-import ImageTagger.Total as Total
+import fm_image_tagger.command_tagger as command_tagger
+import fm_image_tagger.display as Display
+import fm_image_tagger.rename as Rename
+import fm_image_tagger.tag_edit as Editor
+import fm_image_tagger.total as Total
 
 
 # CLI main function
@@ -19,7 +19,7 @@ def cli():
     "-t", "--threshold", default=0.35, help="score threshold (default:0.35)", type=float
 )
 def tagger(path, threshold):
-    CommandTagger.createTagFiles(path, threshold)
+    command_tagger.createTagFiles(path, threshold)
 
 
 @cli.command(help="Create caption files, use Ollama vision-model")
@@ -27,7 +27,7 @@ def tagger(path, threshold):
 @click.argument("path", type=str)
 @click.option("-l", "--for-lora", is_flag=True, help="LoRA caption mode")
 def caption(ollama_vision_model, path, for_lora):
-    CommandTagger.createCaptionFiles(path, ollama_vision_model, for_lora)
+    command_tagger.createCaptionFiles(path, ollama_vision_model, for_lora)
 
 
 @cli.command(help="Rename with the serial number")

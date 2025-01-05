@@ -1,6 +1,6 @@
 [project]
-name = "ImageTagger"
-"version" = "0.3.3"
+name = "fm_image_tagger"
+"version" = "0.4.0"
 description = "Caption tagger tool"
 readme = "README.md"
 authors = [
@@ -26,10 +26,10 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/rerofumi/ImageTagger"
+Homepage = "https://github.com/rerofumi/fm_image_tagger"
 
 [project.scripts]
-ImageTagger = "ImageTagger.ImageTagger:run"
+fm_image_tagger = "fm_image_tagger.fm_image_tagger:run"
 
 [build-system]
 requires = ["hatchling"]

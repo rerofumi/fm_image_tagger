@@ -1,8 +1,8 @@
 import os
 import sys
 
-import ImageTagger.OllamaCaption as Caption
-import ImageTagger.Tagger as Tagger
+import fm_image_tagger.ollama_caption as Caption
+import fm_image_tagger.tagger as Tagger
 
 
 def createTagFiles(path, threshold=0.35):

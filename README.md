@@ -1,6 +1,6 @@
-# ImageTagger
+# fm_image_tagger
 
-ImageTaggerは、画像に対するキャプションやタグを管理するためのツールです。CLIを通じて、タグやキャプションの作成、編集、表示を行うことができます。
+fm_image_taggerは、画像に対するキャプションやタグを管理するためのツールです。CLIを通じて、タグやキャプションの作成、編集、表示を行うことができます。
 
 ## 概要
 
@@ -17,18 +17,18 @@ ImageTaggerは、画像に対するキャプションやタグを管理するた
 
 ## インストール
 
-以下の手順で ImageTagger をインストールしてください。
+以下の手順で fm_image_tagger をインストールしてください。
 
 ### pip を使用する場合
 
 ```bash
-pip install ImageTagger
+pip install fm_image_tagger
 ```
 
 ### uv を使用する場合(オススメ)
 
 ```bash
-uv tool install ImageTagger
+uv tool install fm_image_tagger
 ```
 
 予め uv (astral-sh.uv) をインストールしておく必要があります。pip なり winget なりでインストールしておいてください。
@@ -39,7 +39,7 @@ python 仮想環境を作るので、python そのもののインストールが
 リポジトリをクローンした場合、インストール無しに uv を使って起動できます。
 
 ```bash
-uv run ImageTagger <コマンド> [オプション]
+uv run fm_image_tagger <コマンド> [オプション]
 ```
 
 ## 使用方法
@@ -59,41 +59,41 @@ uv run ImageTagger <コマンド> [オプション]
 
 1. 学習用画像を `./images` 内に用意
 2. LoRA 用タグ作成を実行
-`ImageTagger tagger ./Images`
+`fm_image_tagger tagger ./Images`
 3. 作成されたタグを確認
-`ImageTagger total ./Images`
+`fm_image_tagger total ./Images`
 4. 生成されたタグのうち LoRA モデルに覚えさせたい特徴を表すタグを削除していく、キャラクター LoRA なら髪型や目の色などを徹底的に削除する、衣装は着せ替えしたい場合は残した方が良い
-`ImageTagger remove blue_eyes ./Images`
+`fm_image_tagger remove blue_eyes ./Images`
 5. 特徴ワードがなくなるまで 4. を繰り返す
 6. モデルの特徴を集約させるトリガーワード(任意)を先頭に追加
-`ImageTagger add -f my-original-lora-1 ./Images`
+`fm_image_tagger add -f my-original-lora-1 ./Images`
 
 
 #### FLUX LoRA 作成用にキャプションファイルを用意したい
 
 1. 学習用画像を `./images` 内に用意
 2. LoRA 用キャプション作成を実行(`minicpm-v:latest` は任意の ollama model を指定する)
-`ImageTagger caption minicpm-v:latest ./Images -l`
+`fm_image_tagger caption minicpm-v:latest ./Images -l`
 3. モデルの特徴を集約させるトリガーワード(任意)を先頭に追加
-`ImageTagger add -f my-original-lora-1 ./Images`
+`fm_image_tagger add -f my-original-lora-1 ./Images`
 
 
-### ImageTagger コマンドラインリファレンス
+### fm_image_tagger コマンドラインリファレンス
 
-ImageTaggerは、画像のタグ付け、キャプション生成、ファイル名変更などを行うためのツールです。`click`ライブラリを使用してコマンドラインインターフェースが構築されています。
+fm_image_taggerは、画像のタグ付け、キャプション生成、ファイル名変更などを行うためのツールです。`click`ライブラリを使用してコマンドラインインターフェースが構築されています。
 
 #### 基本的な使い方:
 
 `pip` もしくは `uv tool` でインストールしている場合、単体ツールとして起動できます。
 
 ```bash
-ImageTagger <コマンド> [オプション]
+fm_image_tagger <コマンド> [オプション]
 ```
 
 インストールせずソースコードリポジトリから直接起動する場合は `uv run` を使います。
 
 ```bash
-uv run ImageTagger <コマンド> [オプション]
+uv run fm_image_tagger <コマンド> [オプション]
 ```
 
 
@@ -104,7 +104,7 @@ uv run ImageTagger <コマンド> [オプション]
     *   使い方:
 
         ```bash
-        ImageTagger tagger <パス> [オプション]
+        fm_image_tagger tagger <パス> [オプション]
         ```
 
     *   引数:
@@ -120,7 +120,7 @@ uv run ImageTagger <コマンド> [オプション]
     *   使い方:
 
         ```bash
-        ImageTagger caption <ollama-vision-model> <パス> [オプション]
+        fm_image_tagger caption <ollama-vision-model> <パス> [オプション]
         ```
 
     *   引数:
@@ -137,7 +137,7 @@ uv run ImageTagger <コマンド> [オプション]
     *   使い方:
 
         ```bash
-        ImageTagger rename <サフィックス> <パス>
+        fm_image_tagger rename <サフィックス> <パス>
         ```
 
     *   引数:
@@ -150,7 +150,7 @@ uv run ImageTagger <コマンド> [オプション]
     *   使い方:
 
         ```bash
-        ImageTagger add <キーワード> <パス> [オプション]
+        fm_image_tagger add <キーワード> <パス> [オプション]
         ```
 
     *   引数:
@@ -167,7 +167,7 @@ uv run ImageTagger <コマンド> [オプション]
     *   使い方:
 
         ```bash
-        ImageTagger remove <キーワード> <パス>
+        fm_image_tagger remove <キーワード> <パス>
         ```
 
     *   引数:
@@ -180,7 +180,7 @@ uv run ImageTagger <コマンド> [オプション]
     *   使い方:
 
         ```bash
-        ImageTagger total <パス>
+        fm_image_tagger total <パス>
         ```
 
     *   引数:
@@ -192,7 +192,7 @@ uv run ImageTagger <コマンド> [オプション]
     *   使い方:
 
         ```bash
-        ImageTagger display <パス> [オプション]
+        fm_image_tagger display <パス> [オプション]
         ```
 
     *   引数:
@@ -208,12 +208,12 @@ uv run ImageTagger <コマンド> [オプション]
 
 **例:**
 
-- `ImageTagger tagger images/`: `images/`ディレクトリ内の画像にタグファイルを生成します。
-- `ImageTagger caption llama2-vision images/`: `images/`ディレクトリ内の画像にllama2-visionモデルを使用してキャプションファイルを生成します。
-- `ImageTagger rename photo images/`: `images/`ディレクトリ内のファイル名を`photo_0001.jpg`のようにリネームします。
-- `ImageTagger add beautiful images/`: `images/`ディレクトリ内のタグファイルに`beautiful`というキーワードを追加します。
-- `ImageTagger display image.png -m`: `image.png` のメタ情報に含まれている A1111 形式のプロンプト情報を表示します。
-- `ImageTagger display image.png -c minicpm-v:latest`: `image.jpg`のキャプションを minicpm-v モデルで生成し表示します。
+- `fm_image_tagger tagger images/`: `images/`ディレクトリ内の画像にタグファイルを生成します。
+- `fm_image_tagger caption llama2-vision images/`: `images/`ディレクトリ内の画像にllama2-visionモデルを使用してキャプションファイルを生成します。
+- `fm_image_tagger rename photo images/`: `images/`ディレクトリ内のファイル名を`photo_0001.jpg`のようにリネームします。
+- `fm_image_tagger add beautiful images/`: `images/`ディレクトリ内のタグファイルに`beautiful`というキーワードを追加します。
+- `fm_image_tagger display image.png -m`: `image.png` のメタ情報に含まれている A1111 形式のプロンプト情報を表示します。
+- `fm_image_tagger display image.png -c minicpm-v:latest`: `image.jpg`のキャプションを minicpm-v モデルで生成し表示します。
 
 
 ## ライセンス

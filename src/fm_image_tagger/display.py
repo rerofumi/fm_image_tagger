@@ -1,7 +1,7 @@
 from PIL import Image
 
-import ImageTagger.OllamaCaption as Caption
-import ImageTagger.Tagger as Tagger
+import fm_image_tagger.ollama_caption as Caption
+import fm_image_tagger.tagger as Tagger
 
 
 def get_meta(image_path):
