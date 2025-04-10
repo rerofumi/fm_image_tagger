@@ -9,6 +9,8 @@ import huggingface_hub
 import numpy as np
 import onnxruntime as rt
 import pandas as pd
+import requests
+import io
 from PIL import Image
 
 # Dataset v3 series of models:
@@ -54,7 +56,17 @@ class WD14Tagger:
         self.model = model
 
     def prepare_image(self, image_path):
-        image = Image.open(image_path)
+        # URLからの画像読み込みに対応
+        if image_path.startswith(('http://', 'https://')):
+            # URLから画像をダウンロード
+            response = requests.get(image_path, stream=True)
+            response.raise_for_status()  # エラーがあれば例外を発生
+            # BytesIOを使ってメモリ上でファイルとして扱う
+            image = Image.open(io.BytesIO(response.content))
+        else:
+            # 通常のファイルパスからの読み込み
+            image = Image.open(image_path)
+            
         original_width, original_height = image.size
         # image resizing and padding to fit model input size (256x256 is a typical value for ResNet-like models, but it can be any other)
         aspect_ratio = min(
