@@ -46,10 +46,10 @@ def add(keyword, path, first):
 
 
 @cli.command(help="remove word from tag files")
-@click.argument("keyword", type=str)
+@click.argument("keywords", type=str, nargs=-1)
 @click.argument("path", type=str)
-def remove(keyword, path):
-    Editor.remove(path, keyword)
+def remove(keywords, path):
+    Editor.remove(path, keywords)
 
 
 @cli.command(help="remove word from tag files")

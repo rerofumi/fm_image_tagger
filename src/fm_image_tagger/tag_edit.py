@@ -19,7 +19,7 @@ def process_add(file_path, keyword):
         print(f"Failed to process {file_path}: {e}")
 
 
-def process_remove(file_path, keyword):
+def process_remove(file_path, keywords):
     try:
         new_tags = []
         with open(file_path, "r", encoding="utf-8") as file:
@@ -27,7 +27,7 @@ def process_remove(file_path, keyword):
             tags = content.split(",")
             for tag in tags:
                 check_tag = tag.strip()
-                if not check_tag == keyword:
+                if check_tag not in keywords:
                     new_tags.append(check_tag)
         output_tags = ", ".join(new_tags).replace("\n", " ") + "\n"
         with open(file_path, "w+", encoding="utf-8") as file:
@@ -68,7 +68,7 @@ def add(dir, word, trigger=False):
                     process_add(file_path, word)
 
 
-def remove(dir, word):
+def remove(dir, words):
     if not os.path.isdir(dir):
         print(f"The specified path is not a directory: {dir}")
         sys.exit(1)
@@ -77,4 +77,4 @@ def remove(dir, word):
         for file in files:
             if file.endswith(".txt"):
                 file_path = os.path.join(root, file)
-                process_remove(file_path, word)
+                process_remove(file_path, words)
